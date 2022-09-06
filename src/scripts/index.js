@@ -1,4 +1,5 @@
 import { Api } from "./models/api.js";
+import { Modal } from "./models/modal.js";
 
 class LoginPage {
     static renderRegisterPage() {
@@ -22,12 +23,14 @@ class LoginPage {
                 password: passwordInput.value
             };
             const response = await Api.login(body);
-            if(response) {
+            console.log(response)
+            const token = localStorage.getItem("@kenzieRedeSocial:token");
+            console.log(token)
+            if(token && !response.non_field_errors) {
                 window.location.assign("src/pages/dashboard.html");
-            }
-            /* if (response.error) {
-                alert(response.error);
-            } */
+            } else {
+                Modal.showModal();
+            } 
         });
     }
 }

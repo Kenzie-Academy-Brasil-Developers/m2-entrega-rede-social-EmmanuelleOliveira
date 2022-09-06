@@ -1,4 +1,5 @@
 import { Api } from "./api.js";
+import { Modal } from "./modal.js";
 
 class RegisterPage {
     static renderHomePage() {
@@ -28,8 +29,10 @@ class RegisterPage {
                 image: urlInput.value
             };
             const response = await Api.register(body);
-            if (response.error) {
-                alert(response.error);
+            if (response.email[0] !== "user with this email already exists.") {
+                window.location.assign('../../index.html');
+            } else {
+                Modal.showModal();
             }
         });
     }

@@ -17,16 +17,12 @@ export class Api {
         .then(res => {
             localStorage.setItem("@kenzieRedeSocial:token", res.token);
             localStorage.setItem("@kenzieRedeSocial:userId", res.user_uuid);
-            window.location.assign("src/pages/dashboard.html");
+            //window.location.assign("src/pages/dashboard.html");
             
             return res; 
         })
-        .catch(err => console.log(err));
+        .catch(err => err);
         return userLogin; 
-        /* return {
-            "token": "a9b5d3e0aca0aa07a2b680147dfada5be1",
-            "user_uuid": "ff3ec410-f435-4eb6-9e4a-76a97ffc7"
-        } */
     };
 
     static async register(body) {
@@ -38,10 +34,9 @@ export class Api {
         })
         .then(res => res.json())
         .then(res => {
-            window.location.assign('../../index.html');
             return res;
         })
-        .catch(err => console.log(err));
+        .catch(err => err);
         return newUser;
     };
 }

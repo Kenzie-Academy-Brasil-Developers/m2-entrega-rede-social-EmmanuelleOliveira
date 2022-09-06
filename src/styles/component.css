@@ -78,3 +78,63 @@ form > p {
     width: 100%;
 }
 
+.modal-edit {
+    background-color: var(--grey-opacity-1);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: calc(var(--padding-5)*2) var(--padding-5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.modal-home {
+    width: 31%;
+    min-width: 446px;
+    min-height: 120px;
+    position: relative;
+    background-color: var(--brand1);
+    border-radius: var(--radius-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--padding-1);
+    padding: calc(var(--padding-2)*4) var(--padding-1);
+    color: var(--whiteFixed);
+}
+
+.modal-home > h3 {
+    font-size: var(--size-3);
+    font-weight: var(--weight-2);
+    line-height: var(--line-height-4);
+}
+
+.modal-home > p {
+    font-size: var(--size-4);
+    font-weight: var(--weight-4);
+    line-height: var(--line-height-3);
+}
+
+.white-fixed-btn {
+    background-color: var(--whiteFixed);
+    border: none;
+    padding: var(--padding-3);
+    color: var(--grey1);
+    font-family: Inter, "sans-serif";
+    font-size: var(----size-4);
+    font-weight: var(--weight-2);
+    line-height: var(----line-height-4);
+    border-radius: var(--radius-1);
+    cursor: pointer;
+    position: absolute;
+    bottom: calc(var(--padding-3)*2);
+    right: var(--padding-1);
+}
+
+.hidden {
+    display: none;
+}  

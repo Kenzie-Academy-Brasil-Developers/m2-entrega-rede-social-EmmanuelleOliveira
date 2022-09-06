@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/component.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Cadastro - Rede Social</title>
+</head>
+<body>
+    <header>
+        <img src="../assets/TechPosters.png" alt="Logo">
+        <div class="header-btn">
+            <button type="button" class="user-btn">Login</button>
+            <button type="button" class="user-btn select">Registro</button>
+        </div>
+    </header>
+    <main>
+        <div class="initial-container">
+            <div class="header-register">
+                <h2>Cadastro</h2>
+                <button type="button" class="outline-btn" id="back-login-btn">Voltar</button>
+            </div>
+            <form>
+                <input type="text" class="input-group" id="user-name" placeholder="Seu nome">
+                <input type="email" class="input-group" id="user-email" placeholder="Seu e-mail">
+                <input type="password" class="input-group" id="user-password" placeholder="Sua senha">
+                <input type="text" class="input-group" id="user-work" placeholder="Qual o seu trabalho?">
+                <input type="text" class="input-group" id="user-url" placeholder="URL da imagem de perfil">
+                <button type="button" class="primary-btn" id="register-btn">Registrar</button>
+                <p>Já possui login?</p>
+                <button type="button" class="outline-btn" id="back-login-btn-second">Ir para a página de login</button>
+            </form>
+        </div>
+    </main>
+    <script type="module" src="../scripts/models/register.js"></script>
+</body>
+</html>

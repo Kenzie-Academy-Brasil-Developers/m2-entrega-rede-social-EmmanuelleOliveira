@@ -1,0 +1,80 @@
+.user-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--grey4);
+    font-size: var(--size-4);
+    line-height: var(--line-height-4);
+}
+
+.select {
+    background-color: var(--grey2);
+    padding: var(--padding-2);
+    border-radius: var(--radius-1);
+}
+
+h2 {
+    font-weight: var(--weight-1);
+    font-size: var(--size-1);
+    line-height: var(--line-height-1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--padding-1);
+}
+
+form > p {
+    text-align: center;
+    width: 100%;
+    font-size: var(----size-4);
+}
+
+.input-group {
+    width: calc(100% - var(--padding-1)*2);
+    border-radius: var(--radius-1);
+    padding: calc(var(--padding-2)*2) var(--padding-1);
+    border: 2px solid var(--grey4);
+    color: var(--grey2);
+}
+
+.input-group:focus {
+    outline-color: var(--brand1);
+}
+
+.primary-btn, .outline-btn {
+    background-color: var(--brand1);
+    border: none;
+    padding: var(--padding-3);
+    color: var(--whiteFixed);
+    font-family: Inter, "sans-serif";
+    font-size: var(----size-4);
+    font-weight: var(--weight-2);
+    line-height: var(----line-height-4);
+    border-radius: var(--radius-1);
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    background-color: var(--brand2);
+}
+
+.outline-btn {
+    border: 1px solid var(--grey1);
+    background-color: transparent;
+    color: var(--grey1);
+}
+
+.outline-btn:hover {
+    background-color: var(--hover-outline);
+    border-color: var(--brand1);
+    color: var(--brand1);
+}
+
+#login-btn, #back-register-btn, #register-btn, #back-login-btn-second {
+    width: 100%;
+}
+

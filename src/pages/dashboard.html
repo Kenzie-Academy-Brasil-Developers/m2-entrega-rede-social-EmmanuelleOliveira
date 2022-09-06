@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/reset.css">
+    <link rel="stylesheet" href="../styles/component.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>TechPosters</title>
+</head>
+<body>
+    <header>
+        <img src="../assets/TechPosters.png" alt="Logo">
+        <button type="button" class="user-btn" id="logout-btn">Sair</button>
+    </header>
+    <div class="container">
+        <main id="dashboard-main">
+            <div id="user-main">
+                <section class="user-info">
+                    <img class="user-image" id="user-img">
+                    <div class="user-info-text">
+                        <div id="header-user">
+                            <h3 class="title2" id="user-name-logged"></h3>
+                            <span id="followers"></span>
+                        </div>
+                        <p class="text2" id="user-work"></p>
+                    </div>
+                </section>
+                <form>
+                    <input type="text" class="input-group" id="title-post" placeholder="Digitar título do post">
+                    <textarea class="input-group" id="description-post" rows="5" placeholder="Digitar descrição do post"></textarea>
+                    <div id="container-post-btn">
+                        <button type="button" class="primary-btn" id="post-btn">Postar</button>
+                    </div>
+                </form>
+            </div>
+            <div id="posts">
+                <h2 class="title1" id="title-posts">Posts</h2>
+                <ul id="post-list"></ul>
+            </div>
+        </main>
+        <aside>Nada</aside>
+    </div>
+    <script type="module" src="../scripts/models/dashboard.js"></script>
+</body>
+</html>

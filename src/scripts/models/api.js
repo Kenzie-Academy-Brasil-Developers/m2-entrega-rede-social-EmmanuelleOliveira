@@ -43,7 +43,6 @@ export class Api {
     };
 
     static async user(uuid) {
-        console.log(this.token)
         const user = await fetch(`${this.baseUrl}users/${uuid}/`, {
             method: "GET",
             headers: {
@@ -58,8 +57,23 @@ export class Api {
         return user;
     };
 
-    static async getPosts() {
-        const posts = await fetch(`${this.baseUrl}posts/`, {
+    static async getFirstPosts() {
+        const firstPost = await fetch(`${this.baseUrl}posts/?limit=1&offset=1`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${this.token}`
+            }
+        })
+        .then(res => res.json())
+        .then(res => res)
+        .catch(err => console.log(err));
+
+        return firstPost;
+    };
+
+    static async getPosts(position) {
+        const posts = await fetch(`${this.baseUrl}posts/?limit=10&offset=${position-10}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -71,6 +85,37 @@ export class Api {
         .catch(err => console.log(err));
 
         return posts;
-    }
+    };
+
+    static async createUserPost(content) {
+        const newPost = await fetch(`${this.baseUrl}posts/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${this.token}`
+            },
+            body: JSON.stringify(content)
+        })
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+
+        return newPost;
+    };
+
+    static async getUsers() {
+        const users = await fetch(`${this.baseUrl}users/?limit=99&offset=1`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${this.token}`
+            }
+        })
+        .then(res => res.json())
+        .then(res => res)
+        .catch(err => console.log(err));
+
+        return users;
+    };
 }
 

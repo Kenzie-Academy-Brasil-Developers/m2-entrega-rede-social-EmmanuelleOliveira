@@ -122,7 +122,7 @@ aside {
     position: fixed;
     right: 0;
     top: 0;
-    background-color: #0A0C0D;
+    gap: calc(var(--padding-1)*3);
 }
 
 .user-info {

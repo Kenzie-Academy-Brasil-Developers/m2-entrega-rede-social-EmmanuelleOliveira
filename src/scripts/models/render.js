@@ -1,6 +1,5 @@
 export class Render {
     static showUser(user) {
-        console.log(`${user["followers_amount"]}`)
         document.getElementById("user-img").setAttribute("src", user.image);
         document.getElementById("user-name-logged").innerText = `${user.username}`;
         document.getElementById("followers").innerText = `${user["followers_amount"]} seguidores`;
@@ -10,7 +9,7 @@ export class Render {
     static postList(posts) {
         const postsTag = document.getElementById("post-list");
         console.log(posts)
-        posts.results.forEach(post => {
+        posts.forEach(post => {
             const card = Render.createCard(post);
             postsTag.appendChild(card);
         });
@@ -52,6 +51,8 @@ export class Render {
         h2Tag.classList.add("title1");
         pPostTag.classList.add("text1");
         openPostBtn.classList.add("btn-grey1");
+        openPostBtn.classList.add("post-btn");
+        openPostBtn.id = `${post.uuid}`;
         likeImg.classList.add("img-like");
         spanLikeTag.classList.add("text2");
         divLikesTag.classList.add("likes");
@@ -63,7 +64,7 @@ export class Render {
         divLikesTag.append(likeImg, spanLikeTag);
         divInteractionTag.append(openPostBtn, divLikesTag);
         liTag.append(sectionTag, divPostTag, divInteractionTag);
-        
+
         return liTag;
     }
 }

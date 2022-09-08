@@ -8,7 +8,7 @@ export class Render {
 
     static postList(posts) {
         const postsTag = document.getElementById("post-list");
-        console.log(posts)
+        //console.log(posts)
         posts.forEach(post => {
             const card = Render.createCard(post);
             postsTag.appendChild(card);

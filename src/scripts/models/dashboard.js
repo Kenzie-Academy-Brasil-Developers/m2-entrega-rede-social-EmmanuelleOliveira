@@ -48,10 +48,13 @@ class Dashboard {
 
     static usersSugestions(usersApi) {
         const arrayPositions = [];
+        console.log(usersApi)
         const usersRandomDiv = document.querySelectorAll(".random");
         usersRandomDiv.forEach((elem, index) => {
             let position = Math.floor(Math.random() * ((usersApi.results.length-1) - 0 + 1)) + 0;
-            if(arrayPositions.indexOf(position) < 0) {
+            while (arrayPositions.indexOf(position) >= 0) {
+                position = Math.floor(Math.random() * ((usersApi.results.length-1) - 0 + 1)) + 0;
+            }
                 arrayPositions.push(position);
                 const imgSelect = document.getElementById(`img-user-${index+1}`);
                 imgSelect.src = `${usersApi.results[position].image}`;
@@ -60,14 +63,51 @@ class Dashboard {
                 const workSelect = document.getElementById(`work-user-${index+1}`);
                 workSelect.innerText = `${usersApi.results[position].work_at}`; 
                 const followBtn = document.getElementById(`user-btn-${index+1}`);
-                if(usersApi.results[position].followers.some((followerUuid) => followerUuid === userId)) {
+                const uuidFollow = usersApi.results[position].uuid;
+                console.log(uuidFollow);
+                if(user.following.some((userFollow) => userFollow.uuid === usersApi.results[position].uuid)) {
                     followBtn.innerText = `Seguindo`;
-                    followBtn.classList.add("primary-btn"); 
+                    followBtn.classList.add("primary-btn");
+                    /* followBtn.addEventListener("click", async () => {
+                        await Api.unfollow(uuidFollow);
+                        followBtn.classList.remove("primary-btn");
+                        followBtn.classList.add("outline-btn");
+                        followBtn.innerText = `Seguir`;
+                    });  */
                 } else {
                     followBtn.innerText = `Seguir`;
-                    followBtn.classList.add("outline-btn"); 
+                    followBtn.classList.add("outline-btn");
+                    const uuidFollow = {"following_users_uuid": usersApi.results[position].uuid};
+                    console.log(uuidFollow);
+                    /* followBtn.addEventListener("click", async () => {
+                        const response = await Api.follow(uuidFollow);
+                        console.log(response);
+                        console.log(user)
+                        followBtn.classList.remove("outline-btn");
+                        followBtn.classList.add("primary-btn");
+                        followBtn.innerText = `Seguindo`;
+                    }); */  
                 }
-            } 
+
+                followBtn.addEventListener("click", async () => {
+                    user.following.forEach((uuidUs) => {console.log(uuidUs.uuid)});
+                    if(user.following.some((userFollow) => userFollow.uuid === usersApi.results[position].uuid)) {
+                        await Api.unfollow(uuidFollow);
+                        followBtn.classList.remove("primary-btn");
+                        followBtn.classList.add("outline-btn");
+                        followBtn.innerText = `Seguir`;
+                        user = await Api.user(userId);
+                    } else {
+                        const uuidFollow = {"following_users_uuid": usersApi.results[position].uuid};
+                        const response = await Api.follow(uuidFollow);
+                        console.log(response);
+                        console.log(user)
+                        followBtn.classList.remove("outline-btn");
+                        followBtn.classList.add("primary-btn");
+                        followBtn.innerText = `Seguindo`;
+                        user = await Api.user(userId);
+                    }
+                });
         });
     };
     
@@ -85,7 +125,8 @@ class Dashboard {
 }
 
 const userId = localStorage.getItem("@kenzieRedeSocial:userId");
-const user = await Api.user(userId);
+let user = await Api.user(userId);
+console.log(user)
 const firstPost = await Api.getFirstPosts();
 let totalPost = firstPost.count;
 let postsApi = await Api.getPosts(totalPost);

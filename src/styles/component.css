@@ -18,6 +18,8 @@
     font-size: var(--size-1);
     line-height: var(--line-height-1);
     color: var(--grey1);
+    width: 100%;
+    word-wrap: break-word;
 }
 
 form {
@@ -193,11 +195,15 @@ form > p {
     font-size: var(--size-2);
     font-weight: var(--weight-2);
     line-height: var(--line-height-3);
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .text2 {
     font-size: var(--size-4);
     color: var(--grey2);
+    width: 100%;
+    word-wrap: break-word;
 }
 
 #container-post-btn {
@@ -208,6 +214,10 @@ form > p {
 
 #title-posts{
     margin-bottom: calc(var(--padding-4)*11);
+}
+
+#posts {
+    width: 100%;
 }
 
 .post-card {
@@ -224,6 +234,8 @@ form > p {
     font-size: var(--size-3);
     line-height: var(--line-height-2);
     color: var(--grey2);
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .post-subject {

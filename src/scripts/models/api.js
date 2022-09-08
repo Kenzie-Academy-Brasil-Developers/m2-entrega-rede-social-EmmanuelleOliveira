@@ -104,7 +104,7 @@ export class Api {
     };
 
     static async getUsers() {
-        const users = await fetch(`${this.baseUrl}users/?limit=99&offset=1`, {
+        const users = await fetch(`${this.baseUrl}users/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -116,6 +116,39 @@ export class Api {
         .catch(err => console.log(err));
 
         return users;
+    };
+
+    static async unfollow(uuid) {
+        const unfollowUser = await fetch(`${this.baseUrl}users/unfollow/${uuid}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${this.token}`
+            }
+        })
+        .then(res => res.json())
+        .then(res => {console.log("removido");
+            return res;
+        })
+        .catch(err => console.log(err));
+
+        return unfollowUser;
+    }; 
+
+    static async follow(uuid) {
+        const unfollowUser = await fetch(`${this.baseUrl}users/follow/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${this.token}`
+            },
+            body: JSON.stringify(uuid)
+        })
+        .then(res => res.json())
+        .then(res => res)
+        .catch(err => console.log(err));
+
+        return unfollowUser;
     };
 }
 

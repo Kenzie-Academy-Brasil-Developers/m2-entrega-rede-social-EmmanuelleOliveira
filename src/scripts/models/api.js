@@ -119,7 +119,7 @@ export class Api {
     };
 
     static async unfollow(uuid) {
-        const unfollowUser = await fetch(`${this.baseUrl}users/unfollow/${uuid}`, {
+        const unfollowUser = await fetch(`${this.baseUrl}users/unfollow/${uuid}/`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
@@ -136,7 +136,7 @@ export class Api {
     }; 
 
     static async follow(uuid) {
-        const unfollowUser = await fetch(`${this.baseUrl}users/follow/`, {
+        const followUser = await fetch(`${this.baseUrl}users/follow/`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -144,11 +144,39 @@ export class Api {
             },
             body: JSON.stringify(uuid)
         })
-        .then(res => res.json())
-        .then(res => res)
+        .then(res => console.log("Removido"))
         .catch(err => console.log(err));
 
-        return unfollowUser;
+        return followUser;
     };
+
+    static async like(uuid) {
+        const likeUser = await fetch(`${this.baseUrl}likes/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${this.token}`
+            },
+            body: JSON.stringify({"post_uuid": uuid})
+        })
+        .then(res => console.log("Like"))
+        .catch(err => console.log(err));
+
+        return likeUser;
+    };
+
+    static async dislike(uuid) {
+        const dislikeUser = await fetch(`${this.baseUrl}likes/${uuid}/`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Token ${this.token}`
+            }
+        })
+        .then(res => console.log("Dislike"))
+        .catch(err => console.log(err));
+
+        return dislikeUser;
+    }; 
 }
 

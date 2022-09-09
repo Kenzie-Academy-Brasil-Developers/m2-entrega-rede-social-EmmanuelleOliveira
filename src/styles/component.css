@@ -18,7 +18,6 @@
     font-size: var(--size-1);
     line-height: var(--line-height-1);
     color: var(--grey1);
-    width: 100%;
     word-wrap: break-word;
 }
 
@@ -195,7 +194,6 @@ form > p {
     font-size: var(--size-2);
     font-weight: var(--weight-2);
     line-height: var(--line-height-3);
-    width: 100%;
     word-wrap: break-word;
 }
 

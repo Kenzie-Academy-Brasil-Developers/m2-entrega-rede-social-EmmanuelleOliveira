@@ -1,3 +1,5 @@
+import { Api } from "./api.js";
+
 export class Render {
     static showUser(user) {
         document.getElementById("user-img").setAttribute("src", user.image);
@@ -8,15 +10,14 @@ export class Render {
 
     static postList(posts) {
         const postsTag = document.getElementById("post-list");
-        //console.log(posts)
+        postsTag.innerHTML = ``;
         posts.forEach(post => {
             const card = Render.createCard(post);
             postsTag.appendChild(card);
         });
     }
 
-    static createCard(post) {
-        
+    static createCard(post) { 
         const liTag = document.createElement('li');
         const sectionTag = document.createElement('section');
         const imgTag = document.createElement('img');
@@ -32,13 +33,19 @@ export class Render {
         const likeImg = document.createElement('img');
         const spanLikeTag = document.createElement('span');
 
+        const userUuid = localStorage.getItem('@kenzieRedeSocial:userId');
+
         imgTag.src = post.author.image;
         h3Tag.innerText = `${post.author.username}`;
         pTag.innerText = `${post.author.work_at}`;
         h2Tag.innerText = `${post.title}`;
         pPostTag.innerText = `${post.description}`;
         openPostBtn.innerText = "Abrir Post";
-        likeImg.src = `../assets/heartBlack.png`;
+        if(post.likes.some((like) => like.user.uuid === userUuid)) {
+            likeImg.src = `../assets/heartRed.png`;
+        } else {
+            likeImg.src = `../assets/heartBlack.png`;
+        }
         spanLikeTag.innerText = `${post.likes.length}`;
 
         imgTag.classList.add("user-image");
@@ -54,6 +61,27 @@ export class Render {
         openPostBtn.classList.add("post-btn");
         openPostBtn.id = `${post.uuid}`;
         likeImg.classList.add("img-like");
+        likeImg.id = `${post.uuid}`;
+        likeImg.addEventListener("click", async () => {
+            const like = post.likes.find((like) => like.user.uuid === userUuid);
+            if(like) {
+                await Api.dislike(like.uuid);
+                likeImg.src = `../assets/heartBlack.png`;
+                spanLikeTag.innerText = `${post.likes.length-1}`;
+                const firstPost = await Api.getFirstPosts();
+                let totalPost = firstPost.count;
+                let postsApi = await Api.getPosts(totalPost);
+                this.postList(postsApi.results.reverse());
+            } else {
+                await Api.like(post.uuid);
+                likeImg.src = `../assets/heartRed.png`;
+                spanLikeTag.innerText = `${post.likes.length+1}`;
+                const firstPost = await Api.getFirstPosts();
+                let totalPost = firstPost.count;
+                let postsApi = await Api.getPosts(totalPost);
+                this.postList(postsApi.results.reverse());
+            }
+        });
         spanLikeTag.classList.add("text2");
         divLikesTag.classList.add("likes");
         divInteractionTag.classList.add("interactions-user"); 

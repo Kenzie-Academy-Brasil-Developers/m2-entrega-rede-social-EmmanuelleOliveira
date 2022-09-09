@@ -48,7 +48,6 @@ class Dashboard {
 
     static usersSugestions(usersApi) {
         const arrayPositions = [];
-        console.log(usersApi)
         const usersRandomDiv = document.querySelectorAll(".random");
         usersRandomDiv.forEach((elem, index) => {
             let position = Math.floor(Math.random() * ((usersApi.results.length-1) - 0 + 1)) + 0;
@@ -64,44 +63,26 @@ class Dashboard {
                 workSelect.innerText = `${usersApi.results[position].work_at}`; 
                 const followBtn = document.getElementById(`user-btn-${index+1}`);
                 const uuidFollow = usersApi.results[position].uuid;
-                console.log(uuidFollow);
-                if(user.following.some((userFollow) => userFollow.uuid === usersApi.results[position].uuid)) {
+                if(user.following.some((userFollow) => userFollow.following_users_id.uuid === usersApi.results[position].uuid)) {
                     followBtn.innerText = `Seguindo`;
                     followBtn.classList.add("primary-btn");
-                    /* followBtn.addEventListener("click", async () => {
-                        await Api.unfollow(uuidFollow);
-                        followBtn.classList.remove("primary-btn");
-                        followBtn.classList.add("outline-btn");
-                        followBtn.innerText = `Seguir`;
-                    });  */
                 } else {
                     followBtn.innerText = `Seguir`;
                     followBtn.classList.add("outline-btn");
-                    const uuidFollow = {"following_users_uuid": usersApi.results[position].uuid};
-                    console.log(uuidFollow);
-                    /* followBtn.addEventListener("click", async () => {
-                        const response = await Api.follow(uuidFollow);
-                        console.log(response);
-                        console.log(user)
-                        followBtn.classList.remove("outline-btn");
-                        followBtn.classList.add("primary-btn");
-                        followBtn.innerText = `Seguindo`;
-                    }); */  
                 }
 
                 followBtn.addEventListener("click", async () => {
-                    user.following.forEach((uuidUs) => {console.log(uuidUs.uuid)});
-                    if(user.following.some((userFollow) => userFollow.uuid === usersApi.results[position].uuid)) {
-                        await Api.unfollow(uuidFollow);
+                    if(user.following.some((userFollow) => userFollow.following_users_id.uuid === usersApi.results[position].uuid)) {
+                        
+                        const [filteredUser] = user.following.filter((userFollow)=> userFollow.following_users_id.uuid === usersApi.results[position].uuid)
+        
+                        await Api.unfollow(filteredUser.uuid);
                         followBtn.classList.remove("primary-btn");
                         followBtn.classList.add("outline-btn");
                         followBtn.innerText = `Seguir`;
                         user = await Api.user(userId);
-                    } else {
-                        const uuidFollow = {"following_users_uuid": usersApi.results[position].uuid};
-                        const response = await Api.follow(uuidFollow);
-                        console.log(response);
-                        console.log(user)
+                    } else {  
+                        const response = await Api.follow({ "following_users_uuid": uuidFollow });
                         followBtn.classList.remove("outline-btn");
                         followBtn.classList.add("primary-btn");
                         followBtn.innerText = `Seguindo`;
@@ -118,20 +99,16 @@ class Dashboard {
                 console.log(event.target.id)
                 Modal.showModalPost(event.target.id, postsApi);
             });
-            /* const postUuid = document.getElementById(``) */
-            //Modal.showPostModal();
         });
-    }
+    };
 }
 
 const userId = localStorage.getItem("@kenzieRedeSocial:userId");
 let user = await Api.user(userId);
-console.log(user)
 const firstPost = await Api.getFirstPosts();
 let totalPost = firstPost.count;
 let postsApi = await Api.getPosts(totalPost);
 const users = await Api.getUsers();
-console.log(users)
 
 Dashboard.logout();
 Render.showUser(user);

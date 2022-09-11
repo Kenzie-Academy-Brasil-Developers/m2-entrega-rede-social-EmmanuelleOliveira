@@ -16,7 +16,6 @@ export class Api {
             console.log(res)
             localStorage.setItem("@kenzieRedeSocial:token", res.token);
             localStorage.setItem("@kenzieRedeSocial:userId", res.user_uuid);
-            //window.location.assign("src/pages/dashboard.html");
             
             return res; 
         })
@@ -58,7 +57,7 @@ export class Api {
     };
 
     static async getFirstPosts() {
-        const firstPost = await fetch(`${this.baseUrl}posts/?limit=1&offset=1`, {
+        const firstPost = await fetch(`${this.baseUrl}posts/?limit=1&offset=1/`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -73,7 +72,7 @@ export class Api {
     };
 
     static async getPosts(position) {
-        const posts = await fetch(`${this.baseUrl}posts/?limit=10&offset=${position-10}`, {
+        const posts = await fetch(`${this.baseUrl}posts/?limit=10&offset=${position - 10}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

@@ -1,0 +1,81 @@
+.user-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--grey4);
+    font-size: var(--size-3);
+    line-height: var(--line-height-4);
+}
+
+.select {
+    background-color: var(--grey2);
+    padding: var(--padding-2);
+    border-radius: var(--radius-1);
+}
+
+.primary-btn,
+.outline-btn,
+.btn-grey1 {
+    background-color: var(--brand1);
+    border: none;
+    padding: var(--padding-3);
+    color: var(--whiteFixed);
+    font-family: Inter, "sans-serif";
+    font-size: var(--size-4);
+    font-weight: var(--weight-2);
+    line-height: var(--line-height-4);
+    border-radius: var(--radius-1);
+    cursor: pointer;
+}
+
+.btn-grey1 {
+    background-color: var(--grey1);
+}
+
+.btn-grey1:hover {
+    background-color: var(--grey0);
+}
+
+.primary-btn:hover {
+    background-color: var(--brand2);
+}
+
+.outline-btn {
+    border: 1px solid var(--grey1);
+    background-color: transparent;
+    color: var(--grey1);
+}
+
+.outline-btn:hover {
+    background-color: var(--hover-outline);
+    border-color: var(--brand1);
+    color: var(--brand1);
+}
+
+#login-btn,
+#back-register-btn,
+#register-btn,
+#back-login-btn-second {
+    width: 100%;
+}
+
+.white-fixed-btn {
+    background-color: var(--whiteFixed);
+    border: none;
+    padding: var(--padding-3);
+    color: var(--grey1);
+    font-family: Inter, "sans-serif";
+    font-size: var(--size-4);
+    font-weight: var(--weight-2);
+    line-height: var(--line-height-4);
+    border-radius: var(--radius-1);
+    cursor: pointer;
+    align-self: end;
+}
+
+#container-post-btn {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+

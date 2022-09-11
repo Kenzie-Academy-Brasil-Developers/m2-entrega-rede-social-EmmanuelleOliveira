@@ -1,0 +1,26 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: var(--padding-5);
+    width: 100%;
+}
+
+form>p {
+    text-align: center;
+    width: 100%;
+    font-size: var(--size-4);
+}
+
+.input-group {
+    width: 100%;
+    border-radius: var(--radius-1);
+    padding: calc(var(--padding-2) * 2) var(--padding-1);
+    border: 2px solid var(--grey4);
+    color: var(--grey2);
+}
+
+.input-group:focus {
+    outline-color: var(--brand1);
+}

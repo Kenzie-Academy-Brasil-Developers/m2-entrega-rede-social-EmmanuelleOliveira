@@ -21,16 +21,20 @@ class RegisterPage {
         const urlInput = document.querySelector("#user-url");
         const registerButton = document.querySelector("#register-btn");
         registerButton.addEventListener("click", async () => {
-            const body = {
-                username: nameInput.value,
-                email: emailInput.value,
-                password: passwordInput.value,
-                "work_at": workInput.value,
-                image: urlInput.value
-            };
-            const response = await Api.register(body);
-            if (response.email[0] !== "user with this email already exists.") {
-                window.location.assign('../../index.html');
+            if (nameInput.value !== "" && emailInput.value !== "" && passwordInput.value !== "" && workInput.value !== "" && urlInput.value !== "") {
+                const body = {
+                    username: nameInput.value,
+                    email: emailInput.value,
+                    password: passwordInput.value,
+                    "work_at": workInput.value,
+                    image: urlInput.value
+                };
+                const response = await Api.register(body);
+                if (response.email[0] !== "user with this email already exists.") {
+                    window.location.assign('../../index.html');
+                } else {
+                    Modal.showModal();
+                }
             } else {
                 Modal.showModal();
             }

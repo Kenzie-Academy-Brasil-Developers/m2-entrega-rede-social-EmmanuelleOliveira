@@ -18,19 +18,21 @@ class LoginPage {
         const passwordInput = document.querySelector("#user-password");
         const loginButton = document.querySelector("#login-btn");
         loginButton.addEventListener("click", async () => {
-            const body = {
-                email: emailInput.value,
-                password: passwordInput.value
-            };
-            const response = await Api.login(body);
-            console.log(response)
-            const token = localStorage.getItem("@kenzieRedeSocial:token");
-            console.log(token)
-            if(token && !response.non_field_errors) {
-                window.location.assign("src/pages/dashboard.html");
+            if(emailInput.value !== "" && passwordInput.value !== "") {
+                const body = {
+                    email: emailInput.value,
+                    password: passwordInput.value
+                };
+                const response = await Api.login(body);
+                const token = localStorage.getItem("@kenzieRedeSocial:token");
+                if(token && !response.non_field_errors) {
+                    window.location.assign("src/pages/dashboard.html");
+                } else {
+                    Modal.showModal();
+                } 
             } else {
                 Modal.showModal();
-            } 
+            }
         });
     }
 }

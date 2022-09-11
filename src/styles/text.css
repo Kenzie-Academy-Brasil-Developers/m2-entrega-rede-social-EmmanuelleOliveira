@@ -1,0 +1,42 @@
+.title1 {
+    width: 100%;
+    font-weight: var(--weight-1);
+    font-size: var(--size-1);
+    line-height: var(--line-height-1);
+    color: var(--grey1);
+    word-wrap: break-word;
+}
+
+.title2, #followers, .text2 {
+    font-size: var(--size-5);
+    font-weight: var(--weight-3);
+    line-height: var(--line-height-4);
+    color: var(--grey1);
+}
+
+.title2 {
+    font-size: var(--size-2);
+    font-weight: var(--weight-2);
+    line-height: var(--line-height-3);
+    word-wrap: break-word;
+}
+
+.text2 {
+    font-size: var(--size-4);
+    color: var(--grey2);
+    width: 100%;
+    word-wrap: break-word;
+}
+
+#title-posts {
+    margin-bottom: calc(var(--padding-4) * 11);
+}
+
+.text1 {
+    font-weight: var(--weight-3);
+    font-size: var(--size-3);
+    line-height: var(--line-height-2);
+    color: var(--grey2);
+    width: 100%;
+    word-wrap: break-word;
+}

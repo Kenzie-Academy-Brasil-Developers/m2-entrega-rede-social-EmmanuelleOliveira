@@ -37,7 +37,7 @@ class Dashboard {
 
             await Api.createUserPost(data);
             const firstPostUpdate = await Api.getFirstPosts();
-            totalPost = firstPostUpdate.count;
+            const totalPost = firstPostUpdate.count;
             postsApi = await Api.getPosts(totalPost);
             postTitle.value = "";
             postDescription.value = "";

@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/reset.css">
-    <link rel="stylesheet" href="../styles/component.css">
     <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/buttons.css">
+    <link rel="stylesheet" href="../styles/inputs.css">
+    <link rel="stylesheet" href="../styles/modals.css">
+    <link rel="stylesheet" href="../styles/text.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
     <title>TechPosters</title>
 </head>
+
 <body>
     <header>
         <img src="../assets/TechPosters.png" alt="Logo">
@@ -20,57 +26,71 @@
     </header>
     <div class="container">
         <main id="dashboard-main">
-            <div id="user-main">
-                <section class="user-info">
-                    <img class="user-image" id="user-img">
-                    <div class="user-info-text">
-                        <div id="header-user">
-                            <h3 class="title2" id="user-name-logged"></h3>
-                            <span id="followers"></span>
+            <div id="top-box">
+                <div id="user-main">
+                    <section class="user-info">
+                        <img class="user-image" id="user-img">
+                        <div class="user-info-text">
+                            <div id="header-user">
+                                <h3 class="title2" id="user-name-logged"></h3>
+                                <span id="followers"></span>
+                            </div>
+                            <p class="text2" id="user-work"></p>
                         </div>
-                        <p class="text2" id="user-work"></p>
+                    </section>
+                    <form>
+                        <input type="text" class="input-group" id="title-post" placeholder="Digitar título do post">
+                        <textarea class="input-group" id="description-post" rows="5"
+                            placeholder="Digitar descrição do post"></textarea>
+                        <div id="container-post-btn">
+                            <button type="button" class="primary-btn" id="post-btn">Postar</button>
+                        </div>
+                    </form>
+                </div>
+                <aside>
+                    <h3 class="title2">Sugestões para você seguir</h3>
+                    <div class="user-info-container">
+                    <div id="blur-effect"></div>
+                        <div class="user-info-aside random">
+                            <div>
+                                <img class="user-image" id="img-user-1">
+                                <div class="user-info-text">
+                                    <h3 class="title2" id="name-user-1"></h3>
+                                    <p class="text2" id="work-user-1"></p>
+                                </div>
+                            </div>
+                            <button type="button" id="user-btn-1"></button>
+                        </div>
+                        <div class="user-info-aside random">
+                            <div>
+                                <img class="user-image" id="img-user-2">
+                                <div class="user-info-text">
+                                    <h3 class="title2" id="name-user-2"></h3>
+                                    <p class="text2" id="work-user-2"></p>
+                                </div>
+                            </div>
+                            <button type="button" id="user-btn-2"></button>
+                        </div>
+                        <div class="user-info-aside random">
+                            <div>
+                                <img class="user-image" id="img-user-3">
+                            <div class="user-info-text">
+                                <h3 class="title2" id="name-user-3"></h3>
+                                <p class="text2" id="work-user-3"></p>
+                            </div>
+                        </div>
+                            <button type="button" id="user-btn-3"></button>
+                        </div>
                     </div>
-                </section>
-                <form>
-                    <input type="text" class="input-group" id="title-post" placeholder="Digitar título do post">
-                    <textarea class="input-group" id="description-post" rows="5" placeholder="Digitar descrição do post"></textarea>
-                    <div id="container-post-btn">
-                        <button type="button" class="primary-btn" id="post-btn">Postar</button>
-                    </div>
-                </form>
+                </aside>
             </div>
+
             <div id="posts">
                 <h2 class="title1" id="title-posts">Posts</h2>
                 <ul id="post-list"></ul>
             </div>
         </main>
-        <aside>
-            <h3 class="title2">Sugestões para você seguir</h3>
-            <div class="user-info random">
-                <img class="user-image" id="img-user-1">
-                <div class="user-info-text">
-                    <h3 class="title2" id="name-user-1"></h3>
-                    <p class="text2" id="work-user-1"></p>
-                </div>
-                <button type="button" id="user-btn-1"></button>
-            </div>
-            <div class="user-info random">
-                <img class="user-image" id="img-user-2">
-                <div class="user-info-text">
-                    <h3 class="title2" id="name-user-2"></h3>
-                    <p class="text2" id="work-user-2"></p>
-                </div>
-                <button type="button" id="user-btn-2"></button>
-            </div>
-            <div class="user-info random">
-                <img class="user-image" id="img-user-3">
-                <div class="user-info-text">
-                    <h3 class="title2" id="name-user-3"></h3>
-                    <p class="text2" id="work-user-3"></p>
-                </div>
-                <button type="button" id="user-btn-3"></button>
-            </div>
-        </aside>
+
     </div>
     <section class="modal-show-post-wrapper hidden">
         <div class="modal-show-post">
@@ -88,4 +108,5 @@
     </section>
     <script type="module" src="../scripts/models/dashboard.js"></script>
 </body>
+
 </html>
